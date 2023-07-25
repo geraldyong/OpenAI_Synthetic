@@ -1,0 +1,18 @@
+Please generate a sample synthetic dataset with 5 rows, consisting of the following fields:
+1. First Name
+2. Last Name
+3. Email Address
+4. Password
+
+Please provide the output in LDAP ldif format.
+
+Please use the following as part of the DN "dc=interesting,dc=com"
+For the uid attribute, it should be of the format firstname.lastname
+For the email field, it should be of the format firstname.lastname@interesting.com
+For the displayName attribute, use the first name and last name.
+The users should belong to the OU: "ou=Users"
+The following objectClasses need to be added: tlsKeyInfo, person, organizationalPerson,inetOrgPerson
+
+The following groups will also need to be created under the OU "ou=Groups": Sales, Marketing, Services, Engineering
+These groups will use the objectClass groupOfNames
+Randomly assign the above users into the groups as members. 

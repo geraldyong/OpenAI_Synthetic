@@ -1,0 +1,10 @@
+Please generate a sample synthetic dataset in csv with 5 rows, consisting of the following fields:
+1. First Name
+2. Last Name
+3. Address
+4. Country
+5. Date of Birth
+6. Postal Code
+7. Salary Range
+8. Religion
+Please include only individuals, addresses and postal codes that are from Singapore. Please also include individuals who may not have any religion.
