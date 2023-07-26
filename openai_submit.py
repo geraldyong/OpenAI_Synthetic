@@ -1,5 +1,15 @@
 #!/opt/homebrew/bin/python3
 
+# This code contains code snippets from OpenAI examples which are subject to MIT License.
+# Please refer to the LICENSE file for more details.
+#
+# This code is from https://github.com/geraldyong/OpenAI_Synthetic
+# Written by Gerald Yong
+# July 2023
+#
+# Versions
+# 1.0 - July 2023 - First Release
+
 # Import required libraries.
 import sys
 import openai
@@ -20,7 +30,7 @@ api_key = base64.b64decode(Path('GeraldYong_APIKey_Google_encoded.txt').read_tex
 openai.api_key = api_key.decode('ascii').rstrip()
 prompt_text = Path(prompt_file).read_text()
 
-# Sends the query to ChatGPT by embedding the prompt text.
+# Sends the prompt to OpenAI by embedding the prompt text.
 completion = openai.ChatCompletion.create(
   model = "gpt-3.5-turbo",
   temperature = 1,
@@ -30,5 +40,5 @@ completion = openai.ChatCompletion.create(
   ]
 )
 
-# Prints out the response from ChatGPT.
+# Prints out the response from OpenAI.
 print(completion.choices[0].message["content"])
