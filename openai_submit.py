@@ -3,6 +3,7 @@
 # Import required libraries.
 import sys
 import openai
+import base64
 from pathlib import Path
 
 # Check for the file passed in.
@@ -13,8 +14,10 @@ else:
     print("Usage: " + sys.argv[0] + " <prompt_file>")
     exit()
 
-# Read the API Key and Prompt Text.
-openai.api_key = Path('/Users/geraldyong/GitHub/ChatGPT/GeraldYong_APIKey_Google.txt').read_text().rstrip()
+# Read the base64 encoded API Key and decode it. 
+# Read the Prompt Text into a variable.
+api_key = base64.b64decode(Path('GeraldYong_APIKey_Google_encoded.txt').read_text().rstrip())
+openai.api_key = api_key.decode('ascii').rstrip()
 prompt_text = Path(prompt_file).read_text()
 
 # Sends the query to ChatGPT by embedding the prompt text.
