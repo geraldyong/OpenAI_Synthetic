@@ -2,7 +2,7 @@
 
 This repository contains a Python script that will read a prompt from a text file and send it to OpenAI. The code is adapted from one of OpenAI's examples: https://platform.openai.com/examples/default-spreadsheet-gen
 
-## Prerequisies
+## Prerequisites
 
 * You will need to have an OpenAI API account, with available usage tokens.
 * You will also need an API Key, which you can create from https://platform.openai.com/account/api-keys
