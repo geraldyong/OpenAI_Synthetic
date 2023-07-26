@@ -33,7 +33,7 @@ prompt_text = Path(prompt_file).read_text()
 # Sends the prompt to OpenAI by embedding the prompt text.
 completion = openai.ChatCompletion.create(
   model = "gpt-3.5-turbo",
-  temperature = 1,
+  temperature = 0.5,
   max_tokens = 300,
   messages = [
     {"role": "system", "content": prompt_text},

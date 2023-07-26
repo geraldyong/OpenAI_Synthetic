@@ -37,7 +37,7 @@ response=`echo curl -sk https://api.openai.com/v1/chat/completions \
       \"content\": \"${prompt_text}\"
     }
   ],
-  \"temperature\": 1,
+  \"temperature\": 0.5,
   \"max_tokens\": 300
 }'" \
 | sh | egrep "\"content\":" | sed 's/.*"content": //' | sed -e 's/^"//' -e 's/"$//'`
