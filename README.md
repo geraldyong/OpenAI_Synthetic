@@ -1,6 +1,6 @@
 # OpenAI_Synthetic
 
-This repository contains a Python script that will read a prompt from a text file and send it to OpenAI. The code is adapted from one of OpenAI's examples https://platform.openai.com/examples/default-spreadsheet-gen (subject to the MIT License).
+This repository contains a script that will read a prompt from a text file and send it to OpenAI's API. The code is adapted from one of OpenAI's examples https://platform.openai.com/examples/default-spreadsheet-gen (subject to the MIT License).
 
 There is a Python version and a Bash version. Both of these scripts can be used on its own and achieves the same result.
 
