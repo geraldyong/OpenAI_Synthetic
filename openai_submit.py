@@ -9,11 +9,12 @@
 #
 # Versions
 # 1.0 - July 2023 - First Release
+# 2.0 - Jan 2024 - Updated for OpenAI library
 
 # Import required libraries.
 import sys
-import openai
 import base64
+from openai import OpenAI
 from pathlib import Path
 
 # Check for the file passed in.
@@ -25,13 +26,16 @@ else:
     exit()
 
 # Read the base64 encoded API Key and decode it. 
+api_key = base64.b64decode(Path('GeraldYong_APIKey_encoded.txt').read_text().rstrip())
+client = OpenAI(
+  api_key = api_key.decode('ascii').rstrip()
+)
+
 # Read the Prompt Text into a variable.
-api_key = base64.b64decode(Path('GeraldYong_APIKey_Google_encoded.txt').read_text().rstrip())
-openai.api_key = api_key.decode('ascii').rstrip()
 prompt_text = Path(prompt_file).read_text()
 
 # Sends the prompt to OpenAI by embedding the prompt text.
-completion = openai.ChatCompletion.create(
+completion = client.chat.completions.create(
   model = "gpt-3.5-turbo",
   temperature = 0.5,
   max_tokens = 300,
@@ -41,4 +45,4 @@ completion = openai.ChatCompletion.create(
 )
 
 # Prints out the response from OpenAI.
-print(completion.choices[0].message["content"])
+print(completion.choices[0].message.content)

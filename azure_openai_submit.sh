@@ -20,28 +20,25 @@ if [ "${prompt_file}" = "" ]; then
   exit
 fi
 
-# Read the base64 encoded API Key and decode it.
+# Read the OPENAI parameters from the environment.
+api_base=${OPENAI_API_BASE}
+api_version=${OPENAI_API_VERSION}
+api_endpoint=${api_base}/deployments/${OPENAI_API_DEPLOYMENT}/completions?api-version=${api_version}
+api_key=${OPENAI_API_KEY}
+
 # Read the Prompt Text into a variable.
-api_key=`cat GeraldYong_APIKey_encoded.txt | base64 --decode`
 prompt_text=`cat ${prompt_file} | awk '{printf "%s\\\n", $0}'`
-api_base=https://api.openai.com/
 
 # Sends the prompt to OpenAI by embedding the prompt text in a curl command.
-response=`echo curl -sk ${api_base}v1/chat/completions \
+response=`echo curl -sk ${api_endpoint} \
   -H \"Content-Type: application/json\" \
-  -H \"Authorization: Bearer ${api_key}\" \
+  -H \"api-key: ${api_key}\" \
   -d "'{
-  \"model\": \"gpt-3.5-turbo\",
-  \"messages\": [
-    {
-      \"role\": \"system\",
-      \"content\": \"${prompt_text}\"
-    }
-  ],
-  \"temperature\": 0.5,
-  \"max_tokens\": 300
-}'" \
-| sh | egrep "\"content\":" | sed 's/.*"content": //' | sed -e 's/^"//' -e 's/"$//'`
+      \"prompt\": \"${prompt_text}\",
+      \"temperature\": 0.5,
+      \"max_tokens\": 300
+  }'" \
+| sh #| egrep "\"content\":" | sed 's/.*"content": //' | sed -e 's/^"//' -e 's/"$//'`
 
 # Prints out the response from OpenAI.
 echo -e ${response}
