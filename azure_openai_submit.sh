@@ -8,7 +8,7 @@
 # July 2023
 #
 # Versions
-# 1.0 - July 2023 - First Release
+# 1.0 - Jan 2024 - First release for Azure OpenAI
 
 # Obtain command line arguments.
 prompt_file=$1
@@ -38,7 +38,7 @@ response=`echo curl -sk ${api_endpoint} \
       \"temperature\": 0.5,
       \"max_tokens\": 300
   }'" \
-| sh #| egrep "\"content\":" | sed 's/.*"content": //' | sed -e 's/^"//' -e 's/"$//'`
+| sh | egrep "\"text\":" | sed 's/.*"text"://' | sed -e 's/^"//' -e 's/"$//'`
 
 # Prints out the response from OpenAI.
 echo -e ${response}

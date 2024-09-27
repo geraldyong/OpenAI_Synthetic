@@ -8,8 +8,7 @@
 # July 2023
 #
 # Versions
-# 1.0 - July 2023 - First Release
-# 2.0 - Jan 2024 - Updated for OpenAI library
+# 1.0 - Jan 2024 - First release for Azure OpenAI
 
 # Import required libraries.
 import os

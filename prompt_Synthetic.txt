@@ -8,3 +8,4 @@ Please generate a sample synthetic dataset in csv with 5 rows, consisting of the
 7. Salary Range
 8. Religion
 Please include only individuals, addresses and postal codes that are from Singapore. Please also include individuals who may not have any religion.
+Please provide the output in CSV format.
